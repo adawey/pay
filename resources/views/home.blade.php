@@ -15,10 +15,8 @@
                     <h1> {{ Auth::user()->balance }} </h1>
                     <h5> my balance </h5>
                 </div>
-                
                 <div class="my-5" style="display: flex;align-items: center;justify-content: center;">
-                    <span id="pay_button" class="submit_btn"
-                        style="background-color:#46B5B5;padding: 5px 30px;cursor: pointer;"> <a href="{{route('AddBalancePage')}}"> add mony </a> </span>
+                    <a href="{{route('AddBalancePage')}}" type="button" class="btn btn-outline-success py-3 px-5">Add Money</a>
                 </div>
             
                 <div class="my-5" style="display: flex;align-items: center;justify-content: center;">
