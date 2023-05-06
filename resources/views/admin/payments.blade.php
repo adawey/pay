@@ -13,33 +13,26 @@
                 <thead class="text-center">
                     <tr class="bg-secondary">
                         <!-- <th scope="col">#</th> -->
-                        <th scope="col">merchant_ID</th>
-                        <th scope="col">name</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Balance</th>
-                        <th scope="col">action</th>
+                        <th scope="col">payment_ID</th>
+                        <th scope="col">amount</th>
+                        <th scope="col">user_name</th>
+                        <th scope="col">number</th>
+                        <th scope="col">destination</th>
+                        <th scope="col">type</th>
+                        <th scope="col">status</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @foreach ($merchants  as  $merchant)
+                    @foreach ($payments  as  $payment)
                     <tr>
-                        <th scope="row">{{ $merchant->id  }}</th>
-                        <td>{{ $merchant->f_name  }} {{ $merchant->l_name  }}</td>
-                        <td>{{ $merchant->number  }}</td>
-                        <td>{{ $merchant->email  }}</td>
-                        <td>{{ $merchant->balance  }}</td>
-                        <td>
+                        <th scope="row">{{ $payment->id  }}</th>
+                        <td>{{ $payment->amount  }}</td>
+                        <td>{{ $payment->user->f_name ?? ''  }}</td>
+                        <td>{{ $payment->number  }}</td>
+                        <td>{{ $payment->destination  }}</td>
+                        <td>{{ $payment->type  }}</td>
+                        <td>{{ $payment->status  }}</td>
                         
-                            <button type="button" onclick="return myFunction();" class="btn btn-danger">
-                                <form id="delete_user" action="{{ route('admin.users.deleteUser') }}" method="POST" style="display: none;">
-                                    <input type="hidden" name="id" value="{{ $merchant->id }}">
-                                    {{ csrf_field() }}
-                                </form>
-                                delete
-                            </button>
-                            
-                        </td>
                     </tr>
                     @endforeach
 
