@@ -1,19 +1,19 @@
 
 @extends('auth.publiclayout')
-@section('page_title', 'new_account')
+@section('page_title', 'Create new account')
 @section('content')
     <div class="container-fluid page_content">
         <form class="form" method="post" action="{{ route('register') }}">
             @csrf
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6  mt-4">
+                    <div class="col-md-6  mt-3">
                         <div class="input_box" style="border: none;box-shadow: none;">
                             <input name="f_name" type="text" placeholder="First Name" required>
                         </div>
 
                     </div>
-                    <div class="col-md-6  mt-4">
+                    <div class="col-md-6  mt-3">
                         <div class="input_box" style="border: none;box-shadow: none;">
                             <input name="l_name" type="text" placeholder="Last Name" required>
                         
@@ -21,7 +21,7 @@
                     </div>
 
                 </div>
-                <div class="row mt-4">
+                <div class="row mt-3">
                     <div class="col-md-12">
                         <div class="input_box" style="border: none;box-shadow: none;">
                             <input type="email" name="email" placeholder="Email" required>
@@ -36,12 +36,12 @@
                     </div>
                 </div>
 
-                <div class="row mt-4">
-                    <div class="col-md-12">
-                        <select class="form-select" name="type" aria-label="Default select example" required>
-                            <option selected disabled> select account type   </option>
-                            <option value="1">user</option>
-                            <option value="2">murch</option>
+                <div class="row mt-3">
+                    <div class="col-md-12 ">
+                        <select class="input p-3 w-100 fs-5" style="border: solid 1px #797fbb; box-shadow: none; border-radius: 10px ;" name="type" aria-label="Default select example" required>
+                            <option selected disabled>Press to select account type   </option>
+                            <option value="1">User</option>
+                            <option value="2">Merchant</option>
                           </select>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
 
 
 
-                <div class="row mt-4">
+                <div class="row mt-3">
                     <div class="col-md-12">
                         <div class="input_box" style="border: none;box-shadow: none;">
                             <input name="number" type="number" maxlength="5" placeholder="Your phone number" required>
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6  mt-4">
+                    <div class="col-md-6  mt-3">
                         <div class="input_box" style="border: none;box-shadow: none;">
                             <input name="password" type="password" placeholder="password" minlength="8" required>
                             <div class="input_box_img_con">
@@ -82,19 +82,19 @@
                         </span>
                         @enderror
                     </div>
-                    <div class="col-md-6  mt-4">
+                    <div class="col-md-6  mt-3">
                         <div class="input_box" style="border: none;box-shadow: none;">
                             <input name="password_confirmation" type="password" placeholder="Confirm password" required>
                         </div>
                     </div>
                 </div>
-                <span class="not">your password must be more than 8 characters</span>
-                <div class="my-4" style="display: flex;align-items: center;justify-content: space-between;">
-                    <div class="link_con mt-3">
+                <span class="not" style="transform: translateY(-1rem)">your password must be more than 8 characters</span>
+                <div style="display: flex; align-items: center; justify-content: space-between; transform: translateY(-1rem)">
+                    <div class="link_con">
                         <a href="{{ route('login') }}">Have an account ? <span style="text-decoration: underline;">Login</span></a>
                     </div>
                     <div>
-                        <input type="submit" class="submit_btn px-3 py-1 rounded" value="Create">
+                        <input type="submit" class="submit_btn px-3 py-1 rounded" style="transform: translateY(-1rem)" value="Create">
                     </div>
                 </div>
             </div>
