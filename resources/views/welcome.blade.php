@@ -157,7 +157,7 @@
             <div class="col-md-6">
                 <div class="containt">
                     <h2>PaySpace</h2>
-                    <p>It is your window to the world of online payment </p>
+                    <p>Your window to online payment world</p>
                     <a class="start_btn" href="{{ url('/home') }}">Let's Go</a>
                 </div>
             </div>
