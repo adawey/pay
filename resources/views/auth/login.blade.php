@@ -1,19 +1,7 @@
+@extends('auth.publiclayout')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name', 'PaySpace') }}</title>
-    <link rel="stylesheet" href="{{URL::asset('assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets/css/style.css')}}">
-</head>
 
-<body>
-    <div class="top_page_login">
-        <span>Login Now</span>
-    </div>
+@section('content')
     <div class="container-fluid page_content">
         <form class="form" method="post" action="{{ route('login') }}">
             @csrf
@@ -66,7 +54,4 @@
             </div>
         </form>
     </div>
-    <script src="{{URL::asset('assets/js/bootstrap.bundle.min.js')}}"></script>
-</body>
-
-</html>
+@endsection
