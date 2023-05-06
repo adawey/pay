@@ -7,6 +7,7 @@
 
 
 <div class="container-fluid page_content">
+    <h1>TEST</h1>
     <form class="form"  method="POST" action="{{ route('password.update') }}">
         @csrf
         <div class="container">
