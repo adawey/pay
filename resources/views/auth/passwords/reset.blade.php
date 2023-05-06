@@ -26,7 +26,7 @@
                 <div class="my-4 d-flex align-items-center justify-content-between text-decoration-underline">
 
                     <div class="mt-3">
-                        <input type="submit" class="submit_btn" value="Login">
+                        <input type="submit" class="submit_btn" value="reset Password">
                     </div>
                 </div>
             </div>

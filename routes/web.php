@@ -59,3 +59,6 @@ Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users
 
 Route::post('/send-notification', [HomeController::class, 'notification'])->name('notification');
 Route::get('/adawe', [NotificationsController::class, 'sendNotification'])->name('sendNotification');
+
+
+Route::get('/admin/merchants', [AdminController::class, 'merchant'])->name('admin.merchants');
