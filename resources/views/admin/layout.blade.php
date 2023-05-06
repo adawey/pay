@@ -22,6 +22,9 @@
                 <a class="nav-link active" aria-current="page" href="{{ route('admin.users') }}">users </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ route('admin.merchants') }}">merchants </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#"> payments </a>
               </li>
               <li class="nav-item">

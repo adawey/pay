@@ -22,11 +22,17 @@ class AdminController extends Controller
         $users = User::where('type', 1)->get();
         return view('admin.users')->with(['users' => $users]);
     }
+
+
+
     public function merchant(Request $request)
     {
-        $users = User::where('type', 2)->get();
-        return view('admin.merchant');
+        $merchants = User::where('type', '=', 2)->get();
+        return view('admin.merchants')->with(['merchants' => $merchants]);
     }
+
+
+
     public function payments()
     {
         $payments = Payment::all();

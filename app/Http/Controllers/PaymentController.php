@@ -27,6 +27,7 @@ class PaymentController extends Controller
             'expiration_date' => 'required',
             'cvv' => 'required',
         ]);
+        // حجزت صف فاضي فالدتا بيز 
         $code = rand(1000, 999999);
         $newPay = new Payment();
         $newPay->user_id = Auth::user()->id;
