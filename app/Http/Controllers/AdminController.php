@@ -17,6 +17,9 @@ class AdminController extends Controller
         }
         return view('admin.index');
     }
+
+
+
     public function users()
     {
         $users = User::where('type', 1)->get();
@@ -32,17 +35,21 @@ class AdminController extends Controller
     }
 
 
-
     public function payments()
     {
         $payments = Payment::all();
-        return view('admin.payments')->with(['payments' => $payments]);;
+        return view('admin.payments')->with(['payments' => $payments]);
     }
+
+
     public function reports()
     {
         $reports = Report::all();
-        return view('admin.reports');
+        return view('admin.reports')->with(['reports' => $reports]);
     }
+
+
+
     public function deleteUser(Request $request)
     {
         $user = User::find($request->id);

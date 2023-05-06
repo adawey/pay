@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Mail\VerifyPay;
 use App\Models\Payment;
+use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -27,7 +28,6 @@ class PaymentController extends Controller
             'expiration_date' => 'required',
             'cvv' => 'required',
         ]);
-        // حجزت صف فاضي فالدتا بيز 
         $code = rand(1000, 999999);
         $newPay = new Payment();
         $newPay->user_id = Auth::user()->id;
@@ -39,7 +39,6 @@ class PaymentController extends Controller
         $newPay->last_four_digits =  substr($request->credit_card_number, -4);
         $newPay->save();
         Mail::to(Auth::user()->email)->send(new VerifyPay(Auth::user()->name,  $newPay->code, $newPay->amount));
-
         return view('user.verifyPay')->with(['newPay' => $newPay]);
     }
     public function confirmBalance(Request $request)
@@ -56,7 +55,6 @@ class PaymentController extends Controller
             $payment->code = null;
             $payment->status = "approved";
             $payment->save();
-            // Notification::send(null, new SendPushNotification("ffdf", "df", Auth::user()->fcm_token));
             return redirect()->route('home');
         } else {
             return "wrong";
@@ -70,17 +68,20 @@ class PaymentController extends Controller
     }
     public function sendMonyCode(Request $request)
     {
-        // $request->validate([
-        //     'amount' => 'required',
-        //     'credit_card_number' => 'required',
-        //     'expiration_date' => 'required',
-        //     'cvv' => 'required',
-        // ]);
+        $request->validate([
+            'amount' => 'required',
+            'phone_number' => 'required',
+            'type' => 'required',
+        ]);
         $received = User::where('number', $request->phone_number)->first();
+
         if (!$received) {
             return redirect()->back()->with(['error' => 'user not found']);
         }
-        // destination
+        if (Auth::user()->balance > $request->amount) {
+            return redirect()->back()->with(['error' => 'The balance is insufficient']);
+        }
+
         $code = rand(1000, 999999);
         if ($request->type == 1) {
             $destination = "frindly";
@@ -138,8 +139,30 @@ class PaymentController extends Controller
         return $newPay;
     }
 
-    public function changeStatus(Request $request)
+    public function confirmPayment(Request $request)
     {
         $payment =  Payment::where('id', $request->id)->where('user_id', Auth::user()->id)->first();
+        $payment->status =  "approved";
+        $received = User::where('number', $payment->number)->first();
+        $receivedBalance = $received->balance + $payment->amount;
+        User::where('number', $payment->number)->update(['balance' => $receivedBalance]);
+        $payment->save();
+        return redirect()->back()->with('message', 'Payment Accept');
+    }
+    public function RejectPayment(Request $request)
+    {
+        $payment =  Payment::where('id', $request->id)->where('user_id', Auth::user()->id)->first();
+        $payment->status =  "Rejected";
+        $UserBalance = Auth::user()->balance;
+        $newBalance  = $payment->amount + $UserBalance;
+        User::where('id', Auth::user()->id)->update(['balance' => $newBalance]);
+        $payment->save();
+        $newReport = new Report();
+        $newReport->user_id = Auth::user()->id;
+        $newReport->title = "rejected Payment";
+        $newReport->body = "pleas cheack this trancaction";
+        $newReport->status = "error";
+        $newReport->save();
+        return redirect()->back()->with('message', 'Payment rejected');
     }
 }
