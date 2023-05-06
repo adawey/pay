@@ -9,13 +9,13 @@
                 <div class="row">
                     <div class="col-md-6  mt-4">
                         <div class="input_box" style="border: none;box-shadow: none;">
-                            <input name="f_name" type="text" placeholder="First Name">
+                            <input name="f_name" type="text" placeholder="First Name" required>
                         </div>
 
                     </div>
                     <div class="col-md-6  mt-4">
                         <div class="input_box" style="border: none;box-shadow: none;">
-                            <input name="l_name" type="text" placeholder="Last Name">
+                            <input name="l_name" type="text" placeholder="Last Name" required>
                         
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                 <div class="row mt-4">
                     <div class="col-md-12">
                         <div class="input_box" style="border: none;box-shadow: none;">
-                            <input type="email" name="email" placeholder="Email">
+                            <input type="email" name="email" placeholder="Email" required>
                             
                             <div class="input_box_img_con">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
@@ -38,7 +38,7 @@
 
                 <div class="row mt-4">
                     <div class="col-md-12">
-                        <select class="form-select" name="type" aria-label="Default select example">
+                        <select class="form-select" name="type" aria-label="Default select example" required>
                             <option selected disabled> select account type   </option>
                             <option value="1">user</option>
                             <option value="2">murch</option>
@@ -53,7 +53,7 @@
                 <div class="row mt-4">
                     <div class="col-md-12">
                         <div class="input_box" style="border: none;box-shadow: none;">
-                            <input name="number" type="number" maxlength="5" placeholder="Your phone number">
+                            <input name="number" type="number" maxlength="5" placeholder="Your phone number" required>
                             
                             <div class="input_box_img_con">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
@@ -71,7 +71,7 @@
                 <div class="row">
                     <div class="col-md-6  mt-4">
                         <div class="input_box" style="border: none;box-shadow: none;">
-                            <input name="password" type="password" placeholder="password" minlength="8">
+                            <input name="password" type="password" placeholder="password" minlength="8" required>
                             <div class="input_box_img_con">
                                 <img  src="{{URL::asset('assets/image/icons8-hide-30 1.png')}}" alt="">
                             </div>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="col-md-6  mt-4">
                         <div class="input_box" style="border: none;box-shadow: none;">
-                            <input name="password_confirmation" type="password" placeholder="Confirm password">
+                            <input name="password_confirmation" type="password" placeholder="Confirm password" required>
                         </div>
                     </div>
                 </div>
