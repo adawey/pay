@@ -8,6 +8,8 @@ use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Notification;
+use App\Notifications\SendPushNotification;
 
 class PaymentController extends Controller
 {
@@ -53,6 +55,7 @@ class PaymentController extends Controller
             $payment->code = null;
             $payment->status = "approved";
             $payment->save();
+            // Notification::send(null, new SendPushNotification("ffdf", "df", Auth::user()->fcm_token));
             return redirect()->route('home');
         } else {
             return "wrong";

@@ -2,9 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\NotificationsController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +45,6 @@ Route::post('/sendMony-confirm', [PaymentController::class, 'sendMonyConfirm'])-
 
 
 Route::patch('/fcm-token', [HomeController::class, 'updateToken'])->name('fcmToken');
-Route::post('/send-notification', [HomeController::class, 'notification'])->name('notification');
 
 
 Route::get('/Send-report', [ReportsController::class, 'reportPage'])->name('reportPage');
@@ -51,3 +53,9 @@ Route::get('/MyPayments', [UserController::class, 'myPayment'])->name('myPayment
 
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+
+
+
+Route::post('/send-notification', [HomeController::class, 'notification'])->name('notification');
+Route::get('/adawe', [NotificationsController::class, 'sendNotification'])->name('sendNotification');

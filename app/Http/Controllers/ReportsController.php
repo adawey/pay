@@ -22,7 +22,7 @@ class ReportsController extends Controller
         $NewReport->body = $request->body;
         $NewReport->status = $request->status;
         $NewReport->save();
-        return redirect()->route('home');
+        return redirect()->route('home')->with(['success' => 'thank you']);
     }
     public function adminPage()
     {

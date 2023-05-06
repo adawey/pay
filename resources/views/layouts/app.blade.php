@@ -40,6 +40,8 @@
     <script src="{{URL::asset('assets/js/main.js')}}"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     // Your web app's Firebase configuration
@@ -77,45 +79,18 @@
 
     initFirebaseMessagingRegistration();
   
-    messaging.onMessage(function({data:{body,title}}){
-        new Notification(title, {body});
-    });
+    messaging.onMessage((payload) => {
+         console.log('Message received. ', payload);
+        //   const obj = JSON.parse(payload.notification.body);
+           swal({
+                    title: payload.notification.body,
+                    type: 'info',
+                    confirmButtonText: 'موافق',
+            });
+        // ...
+        });
 </script>
-    {{-- <script>
-        window.onload = function () {
-            var today = new Date();
-            var dd = today.getDate();
-            var mm = today.getMonth() + 1;
-            var yyyy = today.getFullYear();
-            if (dd < 10) {
-                dd = '0' + dd;
-            }
-            if (mm < 10) {
-                mm = '0' + mm;
-            }
-            today = yyyy + '-' + mm;
-            document.getElementById("datee").min = today;
 
-
-
-
-            document.getElementById("pay_button").addEventListener('click', function () {
-                document.getElementById("popup_windows").style.cssText = "display: flex;"
-            });
-            document.getElementById("Cancel").addEventListener('click', function () {
-                document.getElementById("popup_windows").style.cssText = "display: none;";
-            });
-
-            document.getElementById("verify_btn").addEventListener('click', function () {
-                document.getElementById("popup_windows").style.cssText = "display: flex;"
-            });
-
-            document.getElementById("close").addEventListener('click', function () {
-                document.getElementById("popup_windows").style.cssText = "display: none;"
-            });
-
-        }
-    </script> --}}
 </body>
 
 </html>
