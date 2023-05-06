@@ -40,6 +40,7 @@ Route::post('/addbalance-confirm', [PaymentController::class, 'confirmBalance'])
 Route::get('/sendMony', [PaymentController::class, 'sendMonyPage'])->name('sendMonyPage');
 Route::post('/sendMony-store', [PaymentController::class, 'sendMonyCode'])->name('sendMony.verifyPay');
 Route::post('/sendMony-confirm', [PaymentController::class, 'sendMonyConfirm'])->name('sendMony.confirm');
+Route::get('/notifications', [NotificationsController::class, 'index'])->name('user.notifications');
 
 
 
@@ -54,7 +55,7 @@ Route::get('/MyPayments', [UserController::class, 'myPayment'])->name('myPayment
 
 
 Route::post('/send-notification', [HomeController::class, 'notification'])->name('notification');
-Route::get('/adawe', [NotificationsController::class, 'sendNotification'])->name('sendNotification');
+
 
 
 

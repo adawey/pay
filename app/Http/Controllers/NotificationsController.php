@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Notification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationsController extends Controller
 {
@@ -45,5 +46,12 @@ class NotificationsController extends Controller
         $response = curl_exec($ch);
 
         return true;
+    }
+
+    public function index()
+    {
+
+
+        return view('user.notification');
     }
 }

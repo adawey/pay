@@ -28,7 +28,7 @@
         </div>
         <div class="notfication_icon_con">
             <div class="not_con">
-                <a href="notification.html"><img src="{{URL::asset('assets/image/icons8-notification-24 1.png')}}" alt=""></a>
+                <a href="{{ route('user.notifications') }}"><img src="{{URL::asset('assets/image/icons8-notification-24 1.png')}}" alt=""></a>
             </div>
         </div>
         <span>Payment</span>
