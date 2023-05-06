@@ -36,7 +36,7 @@ class AdminController extends Controller
     public function payments()
     {
         $payments = Payment::all();
-        return view('admin.payments');
+        return view('admin.payments')->with(['payments' => $payments]);;
     }
     public function reports()
     {
@@ -46,5 +46,8 @@ class AdminController extends Controller
     public function deleteUser(Request $request)
     {
         $user = User::find($request->id);
+        Payment::where('user_id', $user->id)->delete();
+        $user->delete();
+        return redirect()->back()->with('message', 'deleted Done');
     }
 }

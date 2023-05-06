@@ -52,13 +52,15 @@ Route::post('/save-report', [ReportsController::class, 'storeReport'])->name('st
 Route::get('/MyPayments', [UserController::class, 'myPayment'])->name('myPayment');
 
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
-
-
 
 Route::post('/send-notification', [HomeController::class, 'notification'])->name('notification');
 Route::get('/adawe', [NotificationsController::class, 'sendNotification'])->name('sendNotification');
 
 
+
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+Route::post('/admin/deleteUser', [AdminController::class, 'deleteUser'])->name('admin.users.deleteUser');
 Route::get('/admin/merchants', [AdminController::class, 'merchant'])->name('admin.merchants');
+Route::get('/admin/payments', [AdminController::class, 'payments'])->name('admin.payments');
