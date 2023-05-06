@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="top_page">
-        <span>Create your account now </span>
+        <span> @yield('page_title') </span>
     </div>
     @if ($errors->any())
     <div class="alert alert-danger">
