@@ -68,17 +68,18 @@ class PaymentController extends Controller
     }
     public function sendMonyCode(Request $request)
     {
+
         $request->validate([
             'amount' => 'required',
             'phone_number' => 'required',
             'type' => 'required',
         ]);
         $received = User::where('number', $request->phone_number)->first();
-
+        // dd($received);
         if (!$received) {
             return redirect()->back()->with(['error' => 'user not found']);
         }
-        if (Auth::user()->balance > $request->amount) {
+        if (Auth::user()->balance < $request->amount) {
             return redirect()->back()->with(['error' => 'The balance is insufficient']);
         }
 

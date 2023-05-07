@@ -16,8 +16,8 @@
                     </div>
                 </div>
             </div>
-            <div class="my-5" style="display: flex;align-items: center;justify-content: center;">
-                <button type="submit" >Confirm</button>
+            <div class="mt-3" style="display: flex;align-items: center;justify-content: center;">
+                <button type="submit" class="btn btn-outline-success py-3 px-5 fs-4 fw-bold">Confirm</button>
             </div>
         </div>
     </form>

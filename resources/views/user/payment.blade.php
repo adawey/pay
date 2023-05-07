@@ -30,8 +30,18 @@
                         <td>
                             @if($payment->status == "pending" &&  $payment->type == "sender")
                             <div class="d-flex justify-content-between">
-                            <button type="button" class="btn btn-success px-2">Approve</button>
-                            <button type="button" class="btn btn-danger ">Decline</button>
+                                    <button type="button" class="btn btn-success px-2"  onclick="event.preventDefault();document.getElementById('accept_{{$payment->id}}').submit();">
+                                        <form id="accept_{{$payment->id}}" action="{{ route('user.confirmPayment') }}" method="POST" style="display: none;">
+                                            <input type="hidden" name="id" value="{{ $payment->id }}">
+                                            {{ csrf_field() }}
+                                        </form>
+                                        Approve</button>
+                                    <button type="button" class="btn btn-danger "  onclick="event.preventDefault();document.getElementById('reject_{{$payment->id}}').submit();">
+                                        <form id="reject_{{$payment->id}}" action="{{ route('user.RejectPayment') }}" method="POST" style="display: none;">
+                                            <input type="hidden" name="id" value="{{ $payment->id }}">
+                                            {{ csrf_field() }}
+                                        </form>
+                                        Decline</button>
                             </div>
                             @endif
                         </td>

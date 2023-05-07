@@ -41,6 +41,8 @@ Route::get('/sendMony', [PaymentController::class, 'sendMonyPage'])->name('sendM
 Route::post('/sendMony-store', [PaymentController::class, 'sendMonyCode'])->name('sendMony.verifyPay');
 Route::post('/sendMony-confirm', [PaymentController::class, 'sendMonyConfirm'])->name('sendMony.confirm');
 Route::get('/notifications', [NotificationsController::class, 'index'])->name('user.notifications');
+Route::post('/acceptPayment', [PaymentController::class, 'confirmPayment'])->name('user.confirmPayment');
+Route::post('/rejectPayment', [PaymentController::class, 'RejectPayment'])->name('user.RejectPayment');
 
 
 

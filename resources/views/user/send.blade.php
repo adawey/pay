@@ -3,6 +3,16 @@
 
 @section('content')
 <div class="container-fluid page_content" style="min-height: 100vh;">
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <form  class="form" method="post" action="{{ route('sendMony.verifyPay') }}">
         @csrf
         <div class="container">
@@ -34,9 +44,9 @@
                     </div>
                 </div>
             </div>
-                <div class="mt-3" style="display: flex;align-items: center;justify-content: center;">
-                    <a type="submit" class="btn btn-outline-success py-3 px-5 fs-4 fw-bold">Confirm</a>
-                </div>
+            <div class="mt-3" style="display: flex;align-items: center;justify-content: center;">
+                <button type="submit" class="btn btn-outline-success py-3 px-5 fs-4 fw-bold">Confirm</button>
+            </div>
         </div>
     </form>
 </div>

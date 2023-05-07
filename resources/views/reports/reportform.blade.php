@@ -23,9 +23,9 @@
             <label for="exampleFormControlTextarea1">Message</label>
             <textarea class="form-control mt-2" name="body" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-                <div class="mt-3" style="display: flex;align-items: center;justify-content: center;">
-                <a type="submit" class="btn btn-outline-success py-3 px-5 fs-4 fw-bold">Confirm</a>
-                </div>
+        <div class="mt-3" style="display: flex;align-items: center;justify-content: center;">
+            <button type="submit" class="btn btn-outline-success py-3 px-5 fs-4 fw-bold">Confirm</button>
+        </div>
     </form>
 </div>
 

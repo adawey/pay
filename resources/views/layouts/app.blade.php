@@ -34,6 +34,10 @@
         <span>Payment</span>
     </div>
 
+   
+
+
+
     @yield('content')
 
     <script src="{{URL::asset('assets/js/bootstrap.bundle.min.js')}}"></script>

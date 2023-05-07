@@ -33,22 +33,10 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="my-5" style="display: flex;align-items: center;justify-content: center;">
-                <button type="submit" >Confirm</button>
-                {{-- <span class="submit_btn"
-                    style="background-color:#46B5B5;padding: 5px 30px;cursor: pointer;">  add mony  </span> --}}
-            </div> -->
+
                 <div class="mt-3" style="display: flex;align-items: center;justify-content: center;">
-                    <a type="submit" class="btn btn-outline-success py-3 px-5 fs-4 fw-bold">Confirm</a>
+                    <button type="submit" class="btn btn-outline-success py-3 px-5 fs-4 fw-bold">Confirm</button>
                 </div>
-            <div class="popup_windows" id="popup_windows">
-                <div class="popup_massage">
-                    <span>Do you want to confirm paying ?</span>
-                    <button type="submit">Confirm</button>
-                    <div class="line"></div>
-                    <button id="Cancel" onclick="display()">Cancel</button>
-                </div>
-            </div>
         </div>
     </form>
 </div>
