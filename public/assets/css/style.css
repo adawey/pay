@@ -502,6 +502,16 @@ a {
     }
 }
 
+@media (max-width: 280px) {
+    .first-box {
+        height: 13rem;
+    }
+
+    .content .notifacation:first-child {
+        margin-top: 5rem !important;
+    }
+}
+
 .notifacation .first-box {
     overflow: hidden;
     display: block;

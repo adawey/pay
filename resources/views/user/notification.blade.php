@@ -5,7 +5,7 @@
 <div class="container page_content" style="min-height: 10vh;">
     <div class="container-fluid notification_page">
         <div class="row w-75" style="width: 100%; transform: translateY(-3rem);">
-            <div class="col-md-12">
+            <div class="col-md-12 content">
                 <div class="notifacation first-box mt-1 mb-3" style="flex-direction: row;justify-content: flex-start; align-items:start; ">
                     <span>You have received
                         SAR from
