@@ -30,6 +30,27 @@ a {
     gap: 20px;
 }
 
+/* Define the animation */
+@keyframes moveUpDown {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.containt .animation-class {
+    animation: moveUpDown 3s ease-in-out infinite;
+}
+
+/* End  the animation */
+
 .containt h2 {
     font-family: 'Inter';
     font-style: normal;
@@ -224,6 +245,7 @@ a {
     color: #000000;
 }
 
+
 /* payment page style */
 /* .payment_top_con{
         width: 100%;
@@ -349,6 +371,57 @@ a {
     cursor: pointer;
 }
 
+/* Logout button mobile customization */
+@media (max-width: 400px) {
+    .logout {
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        /* top: 15px; */
+        cursor: pointer;
+    }
+
+    .logout a {
+        position: absolute;
+        padding: 1px !important;
+        border: 1px solid;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 15px !important;
+        left: -55px;
+        font-weight: 500;
+        color: #fff;
+        width: 4rem;
+        left: 14rem;
+    }
+}
+
+@media (max-width: 280px) {
+    .logout {
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        /* top: 15px; */
+        cursor: pointer;
+    }
+
+    .logout a {
+        position: absolute;
+        padding: 1px !important;
+        border: 1px solid;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 15px !important;
+        left: -55px;
+        font-weight: 500;
+        color: #fff;
+        width: 4rem;
+        top: -0.7rem;
+        left: 9.5rem;
+    }
+}
+
+
 .logout a {
     padding: 5px;
     border: 1px solid;
@@ -357,6 +430,7 @@ a {
     font-weight: 500;
     color: #fff;
 }
+
 
 .not_con {
     width: 100%;
@@ -465,6 +539,45 @@ a {
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+/* Adjusting mobile screen for Pending Payment */
+@media (max-width: 768px) {
+    .first-box {
+        height: 9rem;
+    }
+}
+
+@media (max-width: 361px) {
+    .first-box {
+        height: 10rem;
+    }
+}
+
+@media (max-width: 280px) {
+    .first-box {
+        height: 13rem;
+    }
+
+    .content .notifacation:first-child {
+        margin-top: 5rem !important;
+    }
+}
+
+.notifacation .first-box {
+    overflow: hidden;
+    display: block;
+    animation: typing 3s steps(10) forwards;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
 }
 
 .notifacation span {
