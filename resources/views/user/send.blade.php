@@ -46,6 +46,7 @@
             </div>
             <div class="mt-3" style="display: flex;align-items: center;justify-content: center;">
                 <button type="submit" class="btn btn-outline-success py-3 px-5 fs-4 fw-bold">Confirm</button>
+                <button onClick="window.location = '{{ route('home') }}'" type="button" class="btn btn-outline-secondary py-3 px-5 fs-4 fw-bold ml-2" style="margin-left: 20px">cancle</button>
             </div>
         </div>
     </form>

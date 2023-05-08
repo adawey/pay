@@ -67,7 +67,3 @@ Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users
 Route::post('/admin/deleteUser', [AdminController::class, 'deleteUser'])->name('admin.users.deleteUser');
 Route::get('/admin/merchants', [AdminController::class, 'merchant'])->name('admin.merchants');
 Route::get('/admin/payments', [AdminController::class, 'payments'])->name('admin.payments');
-
-
-
-Route::get('/adawe', [NotificationsController::class, 'sendNotification'])->name('notification');

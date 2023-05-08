@@ -3,8 +3,7 @@
 @section('content')
 
 <div class="container-fluid page_content" style="min-height: 100vh;">
-    <form id="payment_form" class="form" method="get" action="verifyPage.php">
- 
+
 
            <div class="table-responsive text-center">
             <table class="table table-bordered">
@@ -23,6 +22,7 @@
                     @foreach($payments as $payment)
                     <tr>
                         <th scope="row">{{ $payment->id }}</th>
+                       
                         <td>{{ $payment->amount }}</td>
                         <td>{{ $payment->status }}</td>
                         <td>{{ $payment->type }}</td>
@@ -30,18 +30,26 @@
                         <td>
                             @if($payment->status == "pending" &&  $payment->type == "sender")
                             <div class="d-flex justify-content-between">
+
+                                
+                                <form id="accept_{{$payment->id}}" action="{{ route('user.confirmPayment') }}" method="POST" style="display: none;" >
+                               
+                                    <input type="hidden" name="id" value="{{ $payment->id }}" />
+                                    {{ csrf_field() }}
+                                  
+                                </form>
+
+
                                     <button type="button" class="btn btn-success px-2"  onclick="event.preventDefault();document.getElementById('accept_{{$payment->id}}').submit();">
-                                        <form id="accept_{{$payment->id}}" action="{{ route('user.confirmPayment') }}" method="POST" style="display: none;">
-                                            <input type="hidden" name="id" value="{{ $payment->id }}">
-                                            {{ csrf_field() }}
-                                        </form>
-                                        Approve</button>
+                                        Approve
+                                    </button>
                                     <button type="button" class="btn btn-danger "  onclick="event.preventDefault();document.getElementById('reject_{{$payment->id}}').submit();">
                                         <form id="reject_{{$payment->id}}" action="{{ route('user.RejectPayment') }}" method="POST" style="display: none;">
                                             <input type="hidden" name="id" value="{{ $payment->id }}">
                                             {{ csrf_field() }}
                                         </form>
-                                        Decline</button>
+                                        Decline
+                                    </button>
                             </div>
                             @endif
                         </td>
@@ -51,6 +59,5 @@
             </table>
 
         </div>
-    </form>
 </div>
 @endsection
