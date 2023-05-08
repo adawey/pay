@@ -1,38 +1,32 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Traits;
 
-use App\Models\User;
 use App\Models\Notification;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class NotificationsController extends Controller
+
+
+trait NotificationTrait
 {
 
-    public function sendNotification(Request $request)
+    public function sendNotification($user_id, $title, $body)
     {
 
-        $firebaseToken = User::where('id', Auth::user()->id)->whereNotNull('fcm_token')->pluck('fcm_token')->toArray();
+        $firebaseToken = User::where('id', $user_id)->whereNotNull('fcm_token')->pluck('fcm_token')->toArray();
 
         if (!$firebaseToken) {
             return null;
         }
-
-        // $firebaseToken = "fhXIfN5sjJ6dflCpBKCQqV:APA91bHU67k8U4lLsbBU97WPF5M1HPOQM3wXSSB_yKR_z-UestCJCGesgYU27evEqoUVdEJ0MXLMwGH9-ga8nYG_EpD2jPJHTmDKjFNdjjn8tSpIqQffk1LUJit9woM-cSs04eL18Z8-";
+        $this->saveNot($user_id, $title, $body);
         $SERVER_API_KEY = 'AAAAMP7Ar3Y:APA91bHBEY7ecTTdjvxZBNacgqy_dbLD2ftNFn9vVo4hwW-QrnCW0BuLCgKOpfEFv3z8kmWOMUBfwQFNQey0CBVlFbOkt5GzTy__4cyHJEe3wMXUS1Z7VUVs-M__eTkHzGdVOD0_vCnE';
-
-        // $newNotify = new Notification();
-        // $newNotify->message = $request->message;
-
-        // $newNotify->save();
-
-
         $data = [
             "registration_ids" => $firebaseToken,
             "notification" => [
-                "title" => "يسيس",
-                "body" => "سيسيسشي"
+                "title" =>  $title,
+                "body" => $body
             ]
         ];
         $dataString = json_encode($data);
@@ -56,10 +50,13 @@ class NotificationsController extends Controller
         return $response;
     }
 
-    public function index()
+    public function saveNot($user_id, $title, $body)
     {
-        $Notifications = Notification::where('user_id', Auth::user()->id)->get();
-
-        return view('user.notification')->with(['Notifications' => $Notifications]);
+        $new = new Notification();
+        $new->user_id = $user_id;
+        $new->title = $title;
+        $new->body = $body;
+        $new->save();
+        return $new;
     }
 }

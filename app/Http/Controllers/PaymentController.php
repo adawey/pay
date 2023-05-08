@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\NotificationTrait;
 use App\Models\User;
 use App\Mail\VerifyPay;
 use App\Models\Payment;
@@ -14,7 +15,7 @@ use App\Notifications\SendPushNotification;
 
 class PaymentController extends Controller
 {
-
+    use NotificationTrait;
     public function AddBalancePage()
     {
         return view('user.addbalance');
@@ -55,6 +56,7 @@ class PaymentController extends Controller
             $payment->code = null;
             $payment->status = "approved";
             $payment->save();
+            $this->sendNotification(Auth::user()->id, "add mony", "the transaction is done");
             return redirect()->route('home');
         } else {
             return "wrong";
@@ -116,10 +118,12 @@ class PaymentController extends Controller
         $updateBalance =  User::where('id', Auth::user()->id)->update(['balance' => $newUserBalance]);
         if ($updateBalance) {
             $payment->code = null;
+            $this->sendNotification(Auth::user()->id, "send mony", "the transaction is done");
             if ($payment->destination == "frindly") {
                 User::where('number', $payment->number)->update(['balance' => $receivedBalance]);
                 $payment->status = "approved";
                 $this->Receive_money($payment->amount,  $received->id);
+                $this->sendNotification($received->id, "receved mony", "the transaction is done");
             }
             $payment->save();
             return redirect()->route('home');
@@ -148,6 +152,7 @@ class PaymentController extends Controller
         $receivedBalance = $received->balance + $payment->amount;
         User::where('number', $payment->number)->update(['balance' => $receivedBalance]);
         $payment->save();
+        $this->sendNotification($received->id, "receved mony", "the transaction is done");
         return redirect()->back()->with('message', 'Payment Accept');
     }
     public function RejectPayment(Request $request)

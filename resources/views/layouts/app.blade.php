@@ -34,18 +34,22 @@
         <span>Payment</span>
     </div>
 
-   
-
+ 
 
 
     @yield('content')
 
     <script src="{{URL::asset('assets/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{URL::asset('assets/js/main.js')}}"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
+    <script src="{{URL::asset('assets/js/sweetalert2@11.js')}}"></script>
+    <script src="{{URL::asset('assets/js/sweetalert2.all.js')}}"></script>
+    
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
+
 
 <script>
     // Your web app's Firebase configuration
@@ -66,7 +70,7 @@
         messaging.requestPermission().then(function () {
             return messaging.getToken()
         }).then(function(token) {
-            
+
             axios.post("{{ route('fcmToken') }}",{
                 _method:"PATCH",
                 token
@@ -81,20 +85,20 @@
         });
     }
 
+    
+
     initFirebaseMessagingRegistration();
-  
+    var audio = new Audio("{{URL::asset('assets/noti.wav')}}");
     messaging.onMessage((payload) => {
          console.log('Message received. ', payload);
-        //   const obj = JSON.parse(payload.notification.body);
-           swal({
+            audio.play();
+            swal({
                     title: payload.notification.body,
                     type: 'info',
                     confirmButtonText: 'موافق',
             });
-        // ...
         });
 </script>
-
 </body>
 
 </html>
